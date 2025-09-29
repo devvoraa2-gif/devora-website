@@ -20,7 +20,7 @@ const Navbar = () => {
             alt="Devora Logo"
             className="w-10 h-10"
           />
-          <span className="self-center text-xl font-semibold whitespace-nowrap dark:text-white">
+          <span className="self-center text-xl font-semibold whitespace-nowrap text-[#A78BFA] dark:text-[#A78BFA]">
             Devora
           </span>
         </Link>
@@ -74,17 +74,24 @@ const Navbar = () => {
               <li key={index}>
                 <NavLink
                   to={item.to}
+                  onClick={() => setIsMenuOpen(false)}
                   className={({ isActive }) =>
-                    `relative block py-2 pl-3 pr-4 border-b border-gray-100 
-             lg:border-0 lg:p-0 dark:border-gray-700
-             after:content-[''] after:absolute after:left-0 after:right-0 
-             after:bottom-0 after:h-[2px] after:bg-[#00C4B4] after:scale-x-0 
-             after:origin-center after:translate-y-[4px]
-             after:transition-transform after:duration-300
-             hover:after:scale-x-100
-             ${isActive
-                      ? "text-black dark:text-white"
-                      : "text-gray-700 dark:text-gray-400"}`
+                    [
+                      "block py-2 pl-3 pr-4 lg:p-0 transition-colors duration-200",
+                      isActive
+                        ? "text-[#00C4B4] font-semibold"
+                        : "text-gray-700 dark:text-white hover:text-[#00C4B4]",
+
+                      "lg:text-gray-700 lg:dark:text-white lg:hover:text-gray-700 lg:dark:hover:text-white",
+                      "lg:relative",
+                      "lg:after:content-[''] lg:after:absolute lg:after:left-0 lg:after:right-0",
+                      "lg:after:bottom-0 lg:after:h-[2px] lg:after:bg-[#00C4B4]",
+                      "lg:after:scale-x-0 lg:after:origin-center lg:after:translate-y-[4px]",
+                      "lg:after:transition-transform lg:after:duration-300 lg:hover:after:scale-x-100",
+                      isActive ? "lg:after:scale-x-100" : "",
+                    ]
+                      .filter(Boolean)
+                      .join(" ")
                   }
                 >
                   {item.name}
@@ -93,6 +100,8 @@ const Navbar = () => {
             ))}
           </ul>
         </div>
+
+
       </div>
     </nav>
   );
