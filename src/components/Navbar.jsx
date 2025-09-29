@@ -10,17 +10,17 @@ const Navbar = () => {
   const toggleMenu = () => setIsMenuOpen((prev) => !prev);
 
   return (
-    <nav className="bg-white border-gray-200 dark:bg-gray-900 border-b  dark:border-gray-700 py-2.5">
+    <nav className="bg-white border-gray-200 dark:bg-gray-900 border-b  dark:border-gray-700 py-4">
       <div className="flex flex-wrap items-center justify-between max-w-screen-xl px-4 mx-auto">
 
         {/* Logo */}
-        <Link to="/" className="flex items-center space-x-2">
+        <Link to="/" className="flex items-center justify-center">
           <img
-            src="/photos/D.png"
+            src="/photos/logo.png"
             alt="Devora Logo"
-            className="w-10 h-10"
+            className="w-12 h-12"
           />
-          <span className="self-center text-xl font-semibold whitespace-nowrap text-[#A78BFA] dark:text-[#A78BFA]">
+          <span className="text-xl font-semibold whitespace-nowrap text-[#A78BFA] dark:text-[#A78BFA] mt-[-9px] ms-[-3px]">
             Devora
           </span>
         </Link>
@@ -35,9 +35,9 @@ const Navbar = () => {
              focus:outline-none focus:ring-2 focus:ring-gray-300 dark:focus:ring-gray-600"
           >
             {theme === "light" ? (
-              <Moon className="w-5 h-5 text-[#00C4B4]" />
+              <Moon className="w-6 h-6 text-[#00C4B4]" />
             ) : (
-              <Sun className="w-5 h-5 text-yellow-400" />
+              <Sun className="w-6 h-6 text-[#00C4B4]" />
             )}
           </button>
 
