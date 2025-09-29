@@ -1,8 +1,14 @@
+import HeroSection from "../components/HeroSection";
+import WhyChooseUs from "../components/WhyChooseUs";
+import OurServises from "../components/OurServices";
+
 const Home = () => {
   return (
-    <>
-      <h1>Home Component</h1>
-    </>
+    <main>
+      <HeroSection />      
+      <WhyChooseUs />
+      <OurServises />
+    </main>
   );
 };
 
