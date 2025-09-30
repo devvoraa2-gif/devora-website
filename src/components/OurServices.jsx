@@ -6,12 +6,15 @@ const Services = () => {
         <section className="px-6 py-16 bg-white text-black dark:bg-gray-900 dark:text-white">
             <div className="max-w-5xl mx-auto text-center">
                 {/* Heading */}
-                <h2 className="text-2xl md:text-3xl font-bold mb-10">Our Services</h2>
+                <h2 className="text-2xl md:text-3xl font-bold mb-10 transition-colors">
+                    Our Services
+                </h2>
 
                 {/* Top 2 cards */}
                 <div className="grid md:grid-cols-2 gap-6 mb-6">
                     {/* Card 1 */}
-                    <div className="border border-black dark:border-white rounded-lg p-6 text-left">
+                    <div className="border border-black dark:border-white rounded-lg p-6 text-left 
+                                    transition-all duration-500 hover:shadow-xl hover:-translate-y-1">
                         <div className="flex items-start gap-3">
                             <Globe className="w-5 h-5 text-[#24D4CB]" />
                             <div>
@@ -30,7 +33,8 @@ const Services = () => {
                     </div>
 
                     {/* Card 2 */}
-                    <div className="border border-black dark:border-white rounded-lg p-6 text-left">
+                    <div className="border border-black dark:border-white rounded-lg p-6 text-left 
+                                    transition-all duration-500 hover:shadow-xl hover:-translate-y-1">
                         <div className="flex items-start gap-3">
                             <ShoppingCart className="w-5 h-5 text-[#24D4CB]" />
                             <div>
@@ -50,7 +54,8 @@ const Services = () => {
                 </div>
 
                 {/* Bottom card */}
-                <div className="border border-black dark:border-white rounded-lg p-6 max-w-xl mx-auto text-left">
+                <div className="border border-black dark:border-white rounded-lg p-6 max-w-xl mx-auto text-left 
+                                transition-all duration-500 hover:shadow-xl hover:-translate-y-1">
                     <div className="flex items-start gap-3">
                         <RefreshCcw className="w-5 h-5 text-[#24D4CB]" />
                         <div>
@@ -59,13 +64,14 @@ const Services = () => {
                         </div>
                     </div>
 
-                    <div className="mt-4 text-center">
+                    <div className="mt-6 text-center">
                         <Link
                             to="/services"
-                            className="text-[#24D4CB] font-semibold inline-flex items-center gap-1"
+                            className="text-[#24D4CB] font-semibold inline-flex items-center gap-2 
+                                       transition-all duration-500 hover:gap-3 hover:text-[#1bb8ae]"
                         >
                             View All Services
-                            <ArrowRight className="w-4 h-4" />
+                            <ArrowRight className="w-4 h-4 transition-transform duration-500 group-hover:translate-x-1" />
                         </Link>
                     </div>
                 </div>
