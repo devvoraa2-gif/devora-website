@@ -2,6 +2,7 @@ import { useContext, useState } from "react";
 import { Link, NavLink } from "react-router";
 import { ThemeContext } from "../context/ThemeContext";
 import { Moon, Sun, Menu, X } from "lucide-react";
+import { motion, AnimatePresence } from "framer-motion";
 
 const Navbar = () => {
   const { theme, toggleTheme } = useContext(ThemeContext);
@@ -10,45 +11,65 @@ const Navbar = () => {
   const toggleMenu = () => setIsMenuOpen((prev) => !prev);
 
   return (
-    <nav className="bg-white border-gray-200 dark:bg-gray-900 border-b  dark:border-gray-700 py-4">
+    <motion.nav
+      initial={{ y: -70, opacity: 0 }}
+      animate={{ y: 0, opacity: 1 }}
+      transition={{ duration: 0.6, ease: "easeOut" }}
+      className="bg-white border-gray-200 dark:bg-gray-900 border-b dark:border-gray-700 py-4 shadow-sm"
+    >
       <div className="flex flex-wrap items-center justify-between max-w-screen-xl px-4 mx-auto">
 
         {/* Logo */}
-        <Link to="/" className="flex items-center justify-center">
-          <img
-            src="/photos/logo.png"
-            alt="Devora Logo"
-            className="w-12 h-12"
-          />
-          <span className="text-xl font-semibold whitespace-nowrap text-[#A78BFA] dark:text-[#A78BFA] mt-[-9px] ms-[-3px]">
-            Devora
-          </span>
-        </Link>
+        <motion.div
+          whileHover={{ scale: 1.05 }}
+          whileTap={{ scale: 0.97 }}
+          transition={{ type: "spring", stiffness: 200, damping: 15 }}
+        >
+          <Link to="/" className="flex items-center justify-center">
+            <motion.img
+              src="/photos/logo.png"
+              alt="Devora Logo"
+              className="w-12 h-12"
+              whileHover={{ rotate: [0, -5, 5, 0] }}
+              transition={{ duration: 0.6, ease: "easeInOut" }}
+            />
+            <motion.span
+              className="text-xl font-semibold whitespace-nowrap text-[#A78BFA] dark:text-[#A78BFA] mt-[-9px] ms-[-3px]"
+              initial={{ opacity: 0, y: 5 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: 0.4, duration: 0.5, ease: "easeOut" }}
+            >
+              Devora
+            </motion.span>
+          </Link>
+        </motion.div>
 
         {/* Right section */}
         <div className="flex items-center lg:order-2">
           {/* Theme toggle */}
-          <button
+          <motion.button
             onClick={toggleTheme}
-            className="p-2 rounded-full 
-             hover:bg-gray-100 dark:hover:bg-gray-700 
-             focus:outline-none focus:ring-2 focus:ring-gray-300 dark:focus:ring-gray-600"
+            className="p-2 rounded-full hover:bg-gray-100 dark:hover:bg-gray-700 focus:outline-none focus:ring-2 focus:ring-gray-300 dark:focus:ring-gray-600"
+            whileHover={{ rotate: 15, scale: 1.05 }}
+            whileTap={{ scale: 0.92 }}
+            transition={{ type: "spring", stiffness: 300, damping: 18 }}
           >
             {theme === "light" ? (
               <Moon className="w-6 h-6 text-[#00C4B4]" />
             ) : (
               <Sun className="w-6 h-6 text-[#00C4B4]" />
             )}
-          </button>
+          </motion.button>
 
           {/* Mobile menu button */}
-          <button
+          <motion.button
             onClick={toggleMenu}
             type="button"
+            whileTap={{ scale: 0.9 }}
             className="inline-flex items-center p-2 ml-2 text-sm text-gray-500 rounded-lg lg:hidden 
                        hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-200 
                        dark:text-gray-400 dark:hover:bg-gray-700 dark:focus:ring-gray-600"
-            aria-controls="mobile-menu-2"
+            aria-controls="mobile-menu"
             aria-expanded={isMenuOpen}
           >
             {isMenuOpen ? (
@@ -56,39 +77,34 @@ const Navbar = () => {
             ) : (
               <Menu className="w-6 h-6" />
             )}
-          </button>
+          </motion.button>
         </div>
 
-        {/* Nav links */}
-        <div
-          className={`${isMenuOpen ? "block" : "hidden"} w-full lg:flex lg:w-auto lg:order-1`}
-          id="mobile-menu-2"
-        >
-          <ul className="flex flex-col mt-4 font-medium lg:flex-row lg:space-x-8 lg:mt-0">
+        {/* Desktop Nav links */}
+        <div className="hidden lg:flex lg:w-auto lg:order-1">
+          <ul className="flex flex-row font-medium space-x-8">
             {[
               { name: "Home", to: "/" },
               { name: "Services", to: "/services" },
               { name: "About Us", to: "/about" },
               { name: "Contact", to: "/contact" },
             ].map((item, index) => (
-              <li key={index}>
+              <motion.li
+                key={index}
+                whileHover={{ y: -2 }}
+                transition={{ type: "spring", stiffness: 180, damping: 15 }}
+              >
                 <NavLink
                   to={item.to}
-                  onClick={() => setIsMenuOpen(false)}
                   className={({ isActive }) =>
                     [
-                      "block py-2 pl-3 pr-4 lg:p-0 transition-colors duration-200",
-                      isActive
-                        ? "text-[#00C4B4] font-semibold"
-                        : "text-gray-700 dark:text-white hover:text-[#00C4B4]",
-
-                      "lg:text-gray-700 lg:dark:text-white lg:hover:text-gray-700 lg:dark:hover:text-white",
-                      "lg:relative",
-                      "lg:after:content-[''] lg:after:absolute lg:after:left-0 lg:after:right-0",
-                      "lg:after:bottom-0 lg:after:h-[2px] lg:after:bg-[#00C4B4]",
-                      "lg:after:scale-x-0 lg:after:origin-center lg:after:translate-y-[4px]",
-                      "lg:after:transition-transform lg:after:duration-300 lg:hover:after:scale-x-100",
-                      isActive ? "lg:after:scale-x-100" : "",
+                      "relative transition-all duration-500 ease-[cubic-bezier(0.4,0,0.2,1)]",
+                      "text-gray-700 dark:text-white",
+                      isActive ? "text-[#00C4B4] font-semibold" : "",
+                      "after:content-[''] after:absolute after:left-0 after:bottom-[-4px] after:h-[2px] after:bg-[#00C4B4]",
+                      "after:w-full after:scale-x-0 after:origin-left after:transition-transform after:duration-500 after:ease-[cubic-bezier(0.77,0,0.175,1)]",
+                      "hover:after:scale-x-100",
+                      isActive ? "after:scale-x-100" : "",
                     ]
                       .filter(Boolean)
                       .join(" ")
@@ -96,14 +112,61 @@ const Navbar = () => {
                 >
                   {item.name}
                 </NavLink>
-              </li>
+              </motion.li>
             ))}
           </ul>
         </div>
-
-
       </div>
-    </nav>
+
+      {/* Mobile Dropdown */}
+      <AnimatePresence>
+        {isMenuOpen && (
+          <motion.div
+            key="mobile-menu"
+            initial={{ opacity: 0, y: -20 }}
+            animate={{ opacity: 1, y: 0 }}
+            exit={{ opacity: 0, y: -20 }}
+            transition={{ duration: 0.5, ease: "easeInOut" }}
+            className="lg:hidden px-4 mt-3"
+          >
+            <ul className="flex flex-col space-y-3 font-medium">
+              {[
+                { name: "Home", to: "/" },
+                { name: "Services", to: "/services" },
+                { name: "About Us", to: "/about" },
+                { name: "Contact", to: "/contact" },
+              ].map((item, index) => (
+                <motion.li
+                  key={index}
+                  whileHover={{ x: 6 }}
+                  transition={{ type: "spring", stiffness: 220, damping: 18 }}
+                >
+                  <NavLink
+                    to={item.to}
+                    onClick={() => setIsMenuOpen(false)}
+                    className={({ isActive }) =>
+                      [
+                        "relative transition-all duration-500 ease-[cubic-bezier(0.4,0,0.2,1)]",
+                        "text-gray-700 dark:text-white",
+                        isActive ? "text-[#00C4B4] font-semibold" : "",
+                        "after:content-[''] after:absolute after:left-0 after:bottom-[-4px] after:h-[2px] after:bg-[#00C4B4]",
+                        "after:w-full after:scale-x-0 after:origin-left after:transition-transform after:duration-500 after:ease-[cubic-bezier(0.77,0,0.175,1)]",
+                        "hover:after:scale-x-100",
+                        isActive ? "after:scale-x-100" : "",
+                      ]
+                        .filter(Boolean)
+                        .join(" ")
+                    }
+                  >
+                    {item.name}
+                  </NavLink>
+                </motion.li>
+              ))}
+            </ul>
+          </motion.div>
+        )}
+      </AnimatePresence>
+    </motion.nav>
   );
 };
 

@@ -10,7 +10,7 @@ const Footer = () => {
         <div className="flex flex-col items-start gap-2">
           <div className="flex items-center gap-2">
             <img
-              src="/photos/D.png"
+              src="/photos/logo.png"
               alt="Devora Logo"
               className="w-12 h-12"
             />
