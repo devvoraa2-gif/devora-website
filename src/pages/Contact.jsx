@@ -27,7 +27,7 @@ const Contact = () => {
     <div className="min-h-screen flex items-center justify-center p-6 bg-gray-100 dark:bg-[#020617]">
       <form
         onSubmit={handleSubmit}
-        className="w-full max-w-3xl bg-white dark:bg-gray-900 p-8 rounded-2xl shadow-lg space-y-6"
+        className="w-full max-w-3xl bg-white dark:bg-gray-900 p-8 rounded-2xl shadow-lg space-y-6 mt-16"
       >
         {/* Row 1 */}
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
