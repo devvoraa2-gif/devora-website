@@ -15,7 +15,7 @@ const Navbar = () => {
       initial={{ y: -70, opacity: 0 }}
       animate={{ y: 0, opacity: 1 }}
       transition={{ duration: 0.6, ease: "easeOut" }}
-      className="bg-white border-gray-200 dark:bg-gray-900 border-b dark:border-gray-700 py-4 shadow-sm"
+      className="bg-white border-gray-200 dark:bg-gray-900 border-b dark:border-gray-700 py-4 shadow-sm fixed start-0 end-0"
     >
       <div className="flex flex-wrap items-center justify-between max-w-screen-xl px-4 mx-auto">
 

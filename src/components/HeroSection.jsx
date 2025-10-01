@@ -4,7 +4,7 @@ import { motion } from "framer-motion";
 const HeroSection = () => {
   return (
     <section className="dark:bg-gray-900 dark:text-white px-6 pt-20 pb-10 md:pb-20">
-      <div className="max-w-3xl mx-auto text-center">
+      <div className="max-w-3xl mx-auto text-center mt-6">
         {/* Heading */}
         <motion.h1
           className="text-3xl md:text-4xl font-bold leading-tight"

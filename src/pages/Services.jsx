@@ -3,7 +3,7 @@ import { BadgeCheck } from "lucide-react";
 const Services = () => {
   return (
     <section className="dark:bg-gray-900 dark:text-white px-6 py-16">
-      <div className="max-w-6xl mx-auto space-y-16">
+      <div className="max-w-6xl mx-auto space-y-16 mt-14">
         {/* First List */}
         <div className="w-full">
         <h1 className="md:text-3xl font-bold mb-5">We provide comprehensive digital services :</h1>

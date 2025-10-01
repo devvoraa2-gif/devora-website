@@ -1,13 +1,14 @@
-import dashboardImg from "../../public/projects-photos/dashboard.png";
-import loginImg from "../../public/projects-photos/login.png";
-import aboutImg from "../../public/projects-photos/about.png";
+import dashboardImg from "../assets/projects-photos/dashboard.png";
+import loginImg from "../assets/projects-photos/login.png";
+import aboutImg from "../assets/projects-photos/about.png";
 
 const Projects = () => {
   return (
     <>
-      <section className="bg-white dark:bg-gray-900 text-gray-900 dark:text-gray-100 px-6 py-10 transition-colors duration-300">
+      <section
+        className="bg-white dark:bg-gray-900 text-gray-900 dark:text-gray-100 px-6 py-10 transition-colors duration-300">
         {/* Title */}
-        <h1 className="text-3xl font-bold mb-2">
+        <h1 className="text-3xl font-bold mb-2 mt-20">
           ELITE UK <span>:</span>
         </h1>
 
@@ -30,11 +31,7 @@ const Projects = () => {
             alt="Dashboard"
             className="w-full h-64 rounded-lg"
           />
-          <img
-            src={loginImg}
-            alt="Login"
-            className="w-full h-64 rounded-lg"
-          />
+          <img src={loginImg} alt="Login" className="w-full h-64 rounded-lg" />
           <img
             src={aboutImg}
             alt="Testimonials"

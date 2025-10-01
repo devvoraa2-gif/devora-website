@@ -4,7 +4,7 @@ const About = () => {
   return (
     <section className="dark:bg-gray-900 dark:text-white bg-white text-black px-6 py-16">
       {/* Top Grid with Text and Image */}
-      <div className="max-w-6xl mx-auto grid md:grid-cols-2 gap-10 items-center">
+      <div className="max-w-6xl mx-auto grid md:grid-cols-2 gap-10 items-center mt-14">
 
         {/* Text Content */}
         <div className="space-y-12">
