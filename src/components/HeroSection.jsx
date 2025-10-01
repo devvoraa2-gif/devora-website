@@ -59,7 +59,7 @@ const HeroSection = () => {
             transition={{ duration: 0.25, ease: "easeInOut" }}
           >
             <Link
-              to="/"
+              to="/projects"
               className="bg-[#24D4CB] text-black font-semibold px-6 py-3 rounded-md 
                        hover:bg-[#1bb8ae] hover:text-white transition-colors"
             >
